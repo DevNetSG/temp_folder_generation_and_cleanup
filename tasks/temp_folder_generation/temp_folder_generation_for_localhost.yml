@@ -16,4 +16,3 @@
 - name: Temp folder generation tasks -  generate variable for localhost
   set_fact:
     TEMP_FOLDER_LOCAL: '{{ TEMP_FOLDER_LOCAL_PATH.msg }}'
-

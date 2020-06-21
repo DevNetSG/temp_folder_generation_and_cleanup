@@ -4,6 +4,3 @@
     path: "{{ TEMP_FOLDER_LINUX }}"
     state: absent
   run_once: true
-
-
-

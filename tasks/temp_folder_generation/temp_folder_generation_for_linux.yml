@@ -14,5 +14,3 @@
 - name: Temp folder generation tasks -  generate variable for linux
   set_fact:
     TEMP_FOLDER_LINUX: '{{ TEMP_FOLDER_LINUX_PATH.msg }}'
-
-
