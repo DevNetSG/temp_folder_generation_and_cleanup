@@ -170,4 +170,4 @@ BSD
 Author Information
 ------------------
 
-Created by Alick@DevNet.sg
+Created by Alick for fun.
