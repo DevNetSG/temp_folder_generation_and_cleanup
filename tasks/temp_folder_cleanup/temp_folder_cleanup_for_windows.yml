@@ -1,0 +1,6 @@
+
+- name: Temp folder cleanup tasks -  cleanup temp folder for windows
+  win_file:
+    path: '{{ TEMP_FOLDER_WINDOWS }}'
+    state: absent
+  run_once: true

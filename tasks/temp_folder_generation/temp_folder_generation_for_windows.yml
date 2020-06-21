@@ -1,0 +1,16 @@
+---
+- name: Temp folder generation tasks -  generate temp folder path for windows
+  debug:
+    msg: "C:\\{{ folder_prefix }}-{{ 99999 | random | to_uuid }}"
+  run_once: true
+  register: TEMP_FOLDER_WINDOWS_PATH
+
+- name: Temp folder generation tasks -  generate temp folder for windows
+  win_file:
+    path: '{{ TEMP_FOLDER_WINDOWS_PATH.msg }}'
+    state: directory
+  run_once: true
+
+- name: Temp folder generation tasks -  generate variable for windows
+  set_fact:
+    TEMP_FOLDER_WINDOWS: "{{ TEMP_FOLDER_WINDOWS_PATH.msg }}"

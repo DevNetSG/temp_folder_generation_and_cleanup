@@ -1,0 +1,14 @@
+---
+data:
+{% for server in groups['servers'] if hostvars[server]['ansible_hostname'] is defined %}
+{% if hostvars[server]['if_host_is_linux']['failed'] ==false %}
+  - machine_name: {{ hostvars[server]['ansible_hostname'] }}
+    machine_type: linux
+    machine_temp_folder_path: {{ hostvars[server]['TEMP_FOLDER_LINUX'] }}
+{% endif %}
+{% if hostvars[server]['if_host_is_windows']['failed'] ==false %}
+  - machine_name: {{ hostvars[server]['ansible_hostname'] }}
+    machine_type: windows
+    machine_temp_folder_path: {{ hostvars[server]['TEMP_FOLDER_WINDOWS'] }}
+{% endif %}
+{% endfor %}

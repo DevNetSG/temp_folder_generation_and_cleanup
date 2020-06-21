@@ -1,0 +1,7 @@
+---
+- name: Temp folder cleanup tasks -  cleanup temp folder for localhost
+  file:
+    path: "{{ TEMP_FOLDER_LOCAL }}"
+    state: absent
+  delegate_to: localhost
+  run_once: true

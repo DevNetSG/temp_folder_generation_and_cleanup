@@ -1,0 +1,38 @@
+---
+- name: Test connectivity of linux hosts
+  ignore_errors: true
+  ping:
+  register: if_host_is_linux
+
+- name: Test connectivity of windows hosts
+  ignore_errors: true
+  win_ping:
+  register: if_host_is_windows
+
+# Temp folder creation
+- name: Temp folder generation for localhost
+  include_tasks: temp_folder_generation/temp_folder_generation_for_localhost.yml
+
+- name: Temp folder generation for linux/unix
+  include_tasks: temp_folder_generation/temp_folder_generation_for_linux.yml
+  when: if_host_is_linux.failed == false
+
+- name: Temp folder generation for windows
+  include_tasks: temp_folder_generation/temp_folder_generation_for_windows.yml
+  when: if_host_is_windows.failed == false
+
+# output to test variable
+- name: Generate data output
+  include_tasks: generate_data_output/generate_data_output.yml
+
+# Temp folder cleanup
+- name: Temp folder cleanup for localhost
+  include_tasks: temp_folder_cleanup/temp_folder_cleanup_for_localhost.yml
+
+- name: Temp folder cleanup for linux/unix
+  include_tasks: temp_folder_cleanup/temp_folder_cleanup_for_linux.yml
+  when: if_host_is_linux.failed == false
+
+- name: Temp folder cleanup for windows
+  include_tasks: temp_folder_cleanup/temp_folder_cleanup_for_windows.yml
+  when: if_host_is_windows.failed == false

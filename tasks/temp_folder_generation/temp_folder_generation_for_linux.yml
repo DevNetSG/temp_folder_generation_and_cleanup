@@ -1,0 +1,18 @@
+---
+- name: Temp folder generation tasks -  generate temp folder path for linux
+  debug:
+    msg: '/tmp/{{ folder_prefix }}-{{ 99999 | random | to_uuid }}'
+  run_once: true
+  register: TEMP_FOLDER_LINUX_PATH
+
+- name: Temp folder generation tasks -  generate temp folder for linux
+  file:
+    path: '{{ TEMP_FOLDER_LINUX_PATH.msg }}'
+    state: directory
+  run_once: true
+
+- name: Temp folder generation tasks -  generate variable for linux
+  set_fact:
+    TEMP_FOLDER_LINUX: '{{ TEMP_FOLDER_LINUX_PATH.msg }}'
+
+

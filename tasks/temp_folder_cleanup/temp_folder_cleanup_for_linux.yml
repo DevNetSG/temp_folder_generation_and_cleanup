@@ -1,0 +1,9 @@
+---
+- name: Temp folder cleanup tasks -  cleanup temp folder for linux/unix
+  file:
+    path: "{{ TEMP_FOLDER_LINUX }}"
+    state: absent
+  run_once: true
+
+
+

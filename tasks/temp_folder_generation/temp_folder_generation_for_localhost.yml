@@ -1,0 +1,19 @@
+---
+- name: Temp folder generation tasks -  generate temp folder path for localhost
+  debug:
+    msg: '/tmp/{{ folder_prefix }}-{{ 99999 | random | to_uuid }}'
+  delegate_to: localhost
+  run_once: true
+  register: TEMP_FOLDER_LOCAL_PATH
+
+- name: Temp folder generation tasks -  generate temp folder for localhost
+  file:
+    path: '{{ TEMP_FOLDER_LOCAL_PATH.msg }}'
+    state: directory
+  delegate_to: localhost
+  run_once: true
+
+- name: Temp folder generation tasks -  generate variable for localhost
+  set_fact:
+    TEMP_FOLDER_LOCAL: '{{ TEMP_FOLDER_LOCAL_PATH.msg }}'
+

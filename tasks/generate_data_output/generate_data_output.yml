@@ -1,0 +1,21 @@
+---
+# output temp_grouping_out.yaml
+- name: Generate data output - create a jinja2 template to use variable
+  template:
+    src: "temp_grouping_out.j2"
+    dest: "{{ TEMP_FOLDER_LOCAL }}/temp_grouping_out.yml"
+  delegate_to: localhost
+  run_once: true
+
+- name: Generate data output - convert yml to variable
+  include_vars:
+    file: "{{ TEMP_FOLDER_LOCAL }}/temp_grouping_out.yml"
+    name: temp_grouping_out
+  delegate_to: localhost
+  run_once: true
+
+- name: Temp folder creation - display on screen
+  debug:
+    msg: "{{ temp_grouping_out }}"
+  delegate_to: localhost
+  run_once: true
