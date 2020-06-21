@@ -14,8 +14,9 @@ No requirements required.
 Role Variables
 --------------
 
-"Created localhost temp folder with path '{{ TEMP_FOLDER_LOCAL }}'"
-"Created windows temp folder with path '{{ TEMP_FOLDER_WINDOWS }}'"
++ "Created localhost temp folder with path '{{ TEMP_FOLDER_LOCAL }}'"
++ "Created linux temp folder with path '{{ TEMP_FOLDER_LINUX }}'"
++ "Created windows temp folder with path '{{ TEMP_FOLDER_WINDOWS }}'"
 
 Dependencies
 ------------
@@ -39,10 +40,13 @@ STEP01: For ansible, define Inventory "servers", if is ansible tower or ansible 
 ```
 STEP02: Creat main.yml to invoke the role to run this playbook.
 
+Please take note this role does not need gather_facts to be enable.
+but in this example if need to display facts through jinja2, we have enabled facts to print out the output for your info.
 ```yaml
 ---
-- hosts: servers
-
+- name: Testing role to perform temp folder to generation and cleanup
+  hosts: servers
+  gather_facts: yes
   roles:
     - temp_folder_generation_and_cleanup
 ```
