@@ -38,7 +38,19 @@ STEP01: For ansible, define Inventory "servers", if is ansible tower or ansible 
 10.68.33.104 ansible_ssh_user="admin" ansible_ssh_pass="password" ansible_ssh_port=22
 10.68.33.107 ansible_ssh_user="admin" ansible_ssh_pass="password" ansible_ssh_port=5985 ansible_connection="winrm" ansible_winrm_server_cert_validation=ignore
 ```
-STEP02: Creat main.yml to invoke the role to run this playbook.
+
+STEP02: Install role from ansible-galaxy
+First is to defin the current path
+```yaml
+[Alick@AWX ~]# pwd
+/root
+```
+Then use following command to install roledevnetsg.temp_folder_generation_and_cleanup
+```yaml
+[Alick@AWX ~]# ansible-galaxy install devnetsg.temp_folder_generation_and_cleanup --roles-path /root
+```
+
+STEP03: Creat main.yml to invoke the role to run this playbook.
 
 Please take note this role does not need gather_facts to be enable.
 but in this example if need to display facts through jinja2, we have enabled facts to print out the output for your info.
@@ -48,9 +60,9 @@ but in this example if need to display facts through jinja2, we have enabled fac
   hosts: servers
   gather_facts: yes
   roles:
-    - temp_folder_generation_and_cleanup
+    - devnetsg.temp_folder_generation_and_cleanup
 ```
-STEP03: Define initial variable in temp_folder_generation_and_cleanup/vars/main.yml and edit the value as you like.
+STEP04: Define initial variable in temp_folder_generation_and_cleanup/vars/main.yml and edit the value as you like.
 ```yaml
 ---
 folder_prefix: temp-devnetsg
