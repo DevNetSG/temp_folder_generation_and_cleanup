@@ -15,11 +15,11 @@
 
 - name: Temp folder generation for linux/unix
   include_tasks: temp_folder_generation/temp_folder_generation_for_linux.yml
-  when: if_host_is_linux.failed == false
+  when: not if_host_is_linux.failed
 
 - name: Temp folder generation for windows
   include_tasks: temp_folder_generation/temp_folder_generation_for_windows.yml
-  when: if_host_is_windows.failed == false
+  when: not if_host_is_windows.failed
 
 # output to test variable
 - name: Generate data output
@@ -31,8 +31,8 @@
 
 - name: Temp folder cleanup for linux/unix
   include_tasks: temp_folder_cleanup/temp_folder_cleanup_for_linux.yml
-  when: if_host_is_linux.failed == false
+  when: not if_host_is_linux.failed
 
 - name: Temp folder cleanup for windows
   include_tasks: temp_folder_cleanup/temp_folder_cleanup_for_windows.yml
-  when: if_host_is_windows.failed == false
+  when: not if_host_is_windows.failed
