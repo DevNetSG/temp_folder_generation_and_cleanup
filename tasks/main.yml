@@ -22,8 +22,8 @@
   when: not if_host_is_windows.failed
 
 # output to test variable
-- name: Generate data output
-  include_tasks: generate_data_output/generate_data_output.yml
+#- name: Generate data output
+#  include_tasks: generate_data_output/generate_data_output.yml
 
 # Temp folder cleanup
 - name: Temp folder cleanup for localhost

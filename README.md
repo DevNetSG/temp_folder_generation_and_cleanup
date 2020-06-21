@@ -40,7 +40,7 @@ STEP01: For ansible, define Inventory "servers", if is ansible tower or ansible 
 ```
 
 STEP02: Install role from ansible-galaxy
-First is to defin the current path
+First is to define the current path
 ```yaml
 [Alick@AWX ~]# pwd
 /root
