@@ -21,7 +21,7 @@
   include_tasks: temp_folder_generation/temp_folder_generation_for_windows.yml
   when: not if_host_is_windows.failed
 
-# output to test variable
+# Test to generate temp files
 #- name: Generate data output
 #  include_tasks: generate_data_output/generate_data_output.yml
 

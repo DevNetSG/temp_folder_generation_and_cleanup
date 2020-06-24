@@ -62,7 +62,7 @@ but in this example if need to display facts through jinja2, we have enabled fac
   roles:
     - devnetsg.temp_folder_generation_and_cleanup
 ```
-STEP04: Define initial variable in temp_folder_generation_and_cleanup/vars/main.yml and edit the value as you like.
+STEP04: Define initial variable in /vars/main.yml and edit the value as you like.
 ```yaml
 ---
 folder_prefix: temp-devnetsg

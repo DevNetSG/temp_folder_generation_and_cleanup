@@ -1,7 +1,7 @@
 ---
 - name: Temp folder generation tasks -  generate temp folder path for windows
   debug:
-    msg: "C:\\{{ folder_prefix }}-{{ 99999 | random | to_uuid }}"
+    msg: "C:\\temp\\{{ folder_prefix }}-{{ 99999 | random | to_uuid }}"
   run_once: true
   register: TEMP_FOLDER_WINDOWS_PATH
 
